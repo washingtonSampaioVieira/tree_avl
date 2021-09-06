@@ -5,7 +5,7 @@ public class Funcionario {
     private String nome;
     private String sobrenome;
     private String telefone;
-    private Date data_nascimento;
+    private Date dataNascimento;
     private String email;
     private String vaga;
     private String cpf;
@@ -32,11 +32,12 @@ public class Funcionario {
         this.telefone = telefone;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
-    public void setData_nascimento(Date data_nascimento) {
-        this.data_nascimento = data_nascimento;
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getEmail() {
