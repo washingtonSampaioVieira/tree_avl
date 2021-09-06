@@ -1,9 +1,9 @@
 package tree.avl.model;
 
 public class Visitante{
-    public String email;
-    public String cep;
-    public String renda;
+    private String email;
+    private String cep;
+    private String renda;
 
     public String getEmail() {
         return email;

@@ -1,5 +1,7 @@
 package tree.avl;
 
+import tree.avl.model.Pessoa;
+
 import java.util.ArrayList;
 
 public class ArvoreAvl {

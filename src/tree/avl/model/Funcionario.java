@@ -2,14 +2,14 @@ package tree.avl.model;
 import java.util.Date;
 
 public class Funcionario {
-    public String nome;
-    public String sobrenome;
-    public String telefone;
-    public Date data_nascimento;
-    public String email;
-    public String vaga;
-    public String cpf;
-    public String genero;
+    private String nome;
+    private String sobrenome;
+    private String telefone;
+    private Date data_nascimento;
+    private String email;
+    private String vaga;
+    private String cpf;
+    private String genero;
 
     public String getNome() {
         return nome;

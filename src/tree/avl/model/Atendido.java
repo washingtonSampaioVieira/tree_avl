@@ -1,10 +1,17 @@
 package tree.avl.model;
 
 public class Atendido {
-    public String renda;
-    public String emprego;
-    public String endereco;
-    public String cpf;
+    private String renda;
+    private String emprego;
+    private String endereco;
+    private String cpf;
+
+    public Atendido(String renda, String emprego, String endereco, String cpf) {
+        this.renda = renda;
+        this.emprego = emprego;
+        this.endereco = endereco;
+        this.cpf = cpf;
+    }
 
     public String getRenda() {
         return renda;

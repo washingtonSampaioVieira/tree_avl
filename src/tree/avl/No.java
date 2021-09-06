@@ -1,5 +1,7 @@
 package tree.avl;
 
+import tree.avl.model.Pessoa;
+
 public class No {
 
     private No esquerda;

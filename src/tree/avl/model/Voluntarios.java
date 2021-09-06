@@ -3,9 +3,9 @@ import java.util.Date;
 
 public class Voluntarios {
 
-    public String vaga;
-    public String cpf;
-    public String genero;
+    private String vaga;
+    private String cpf;
+    private String genero;
 
     public String getVaga() {
         return vaga;

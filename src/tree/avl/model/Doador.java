@@ -1,9 +1,15 @@
 package tree.avl.model;
 
 public class Doador {
-    public String cep;
-    public String cpf;
-    public String endereco;
+    private String cep;
+    private String cpf;
+    private String endereco;
+
+    public Doador(String cep, String cpf, String endereco) {
+        this.cep = cep;
+        this.cpf = cpf;
+        this.endereco = endereco;
+    }
 
     public String getCep() {
         return cep;

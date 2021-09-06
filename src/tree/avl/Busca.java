@@ -1,5 +1,7 @@
 package tree.avl;
 
+import tree.avl.model.Pessoa;
+
 public class Busca {
     private Pessoa pessoa;
     private Integer compracao;
