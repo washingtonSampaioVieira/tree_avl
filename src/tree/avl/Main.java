@@ -5,7 +5,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        menu();
+
+        ArvoreAvl arvoreAvl = new ArvoreAvl();
+        arvoreAvl.inserir(new Pessoa("José"));
+        arvoreAvl.inserir(new Pessoa("Abraão"));
+        arvoreAvl.inserir(new Pessoa("Washington"));
+        arvoreAvl.inserir(new Pessoa("Camila"));
+        arvoreAvl.inserir(new Pessoa("Marcos"));
+
+        Busca busca= arvoreAvl.buscarRegistro("Camila".hashCode(), arvoreAvl.raiz);
+        System.out.println("Pessoa: " + busca.getPessoa().getNome() + " Achada, comparações: " + busca.getCompracao());
+
+//        menu();
     }
 
     private static void menu() {

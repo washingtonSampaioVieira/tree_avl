@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class ArvoreAvl {
 
     protected No raiz;
+    private Integer comparacao = 0;
 
     public void inserir(Pessoa pessoa) {
         No n = new No(pessoa);
@@ -263,5 +264,28 @@ public class ArvoreAvl {
         inorder(no.getEsquerda(), lista);
         lista.add(no);
         inorder(no.getDireita(), lista);
+    }
+
+    final public Busca buscarRegistro(Integer id, No noAtual) {
+        comparacao++;
+        if (noAtual == null) {
+            return null;
+        }
+
+        if (id > noAtual.getChave().getId()) {
+            if (noAtual.getDireita().getChave().getId().equals(id)) {
+                Busca busca = new Busca(noAtual.getDireita().getChave(), comparacao);
+                comparacao = 0;
+                return busca;
+            }
+            return buscarRegistro(id, noAtual.getDireita());
+        } else {
+            if (noAtual.getEsquerda().getChave().getId().equals(id)) {
+                Busca busca = new Busca(noAtual.getEsquerda().getChave(), comparacao);
+                comparacao = 0;
+                return busca;
+            }
+            return buscarRegistro(id, noAtual.getEsquerda());
+        }
     }
 }
