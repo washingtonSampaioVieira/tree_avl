@@ -1,5 +1,6 @@
 package tree.avl;
 
+import com.sun.corba.se.impl.resolver.SplitLocalResolverImpl;
 import tree.avl.model.*;
 
 import javax.sound.midi.Soundbank;
@@ -10,31 +11,44 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
+    private ArvoreAvl arvoreAvlAtendido;
+    private ArvoreAvl arvoreAvlDoador;
+    private ArvoreAvl arvoreAvlFuncionario;
+    private ArvoreAvl arvoreAvlVisitante;
+    private ArvoreAvl arvoreAvlVoluntario;
+
     public static void main(String[] args) {
         ArvoreAvl arvoreAvl = new ArvoreAvl();
-
+// 1- Listar pessoas por categoria
+// 2-
         try {
             menu();
         } catch (ParseException e) {
             System.out.println("Deu erro no cadastro");
         }
     }
+    //
 
-    private static Pessoa gerarPessoa(Scanner sc) throws ParseException {
+    private static Pessoa gerarPessoa(Scanner sc)  {
         Boolean loop = true;
         Integer opc = 0;
 
         System.out.println("Digite o nome: ");
-        String nome = sc.next();
+        String nome = sc.nextLine();
         Integer id = nome.hashCode();
         System.out.println("Digite o Sobrenome: ");
-        String sobrenome = sc.next();
+        String sobrenome = sc.nextLine();
         System.out.println("Digite o telefone: ");
-        String telefone = sc.next();
+        String telefone = sc.nextLine();
         System.out.println("Digite a data de nascimento no seguinte formato dd/MM/yyyy: ");
-        Date dataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(sc.next());
+        Date dataNascimento = null;
+        try {
+            dataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(sc.nextLine());
+        } catch (ParseException e) {
+            System.out.println("Não conseguimos identificar a data.");
+        }
         System.out.println("Digite o e-mail: ");
-        String email = sc.next();
+        String email = sc.nextLine();
 
 
         Pessoa pessoa = new Pessoa(id, nome, sobrenome, telefone, dataNascimento, email);
@@ -51,20 +65,19 @@ public class Main {
             opc = sc.nextInt();
             System.out.println("\n Opção selecionada: " + opc);
 
-
             switch (opc) {
                 case 1:
                     //Atendido
                     if (pessoa.getDoador() == null && pessoa.getFuncionario() == null) {
                         // Atendido não pode ser doador e nem funcionario
                         System.out.println("Digite a renda: ");
-                        String renda = sc.next();
+                        String renda = sc.nextLine();
                         System.out.println("Digite o emprego: ");
-                        String emprego = sc.next();
+                        String emprego = sc.nextLine();
                         System.out.println("Digite o endereço: ");
-                        String enderecoAtendido = sc.next();
+                        String enderecoAtendido = sc.nextLine();
                         System.out.println("Digite o CPF: ");
-                        String cpfAtendido = sc.next();
+                        String cpfAtendido = sc.nextLine();
 
                         Atendido atendido = new Atendido(renda, emprego, enderecoAtendido, cpfAtendido);
                         pessoa.setAtendido(atendido);
@@ -77,11 +90,11 @@ public class Main {
                     if (pessoa.getAtendido() == null) {
                         //Doador
                         System.out.println("Digite o CEP: ");
-                        String cep = sc.next();
+                        String cep = sc.nextLine();
                         System.out.println("Digite o CPF: ");
-                        String cpf = sc.next();
+                        String cpf = sc.nextLine();
                         System.out.println("Digite o endereço: ");
-                        String endereco = sc.next();
+                        String endereco = sc.nextLine();
 
                         Doador doador = new Doador(cep, cpf, endereco);
                         pessoa.setDoador(doador);
@@ -94,29 +107,14 @@ public class Main {
                     if (pessoa.getAtendido() == null) {
 
                         // Funcionario
-                        System.out.println("Dgite o nome: ");
-                        String nomeFuncionario = sc.next();
-                        System.out.println("Dgite o sobrenome: ");
-                        String sobrenomeFuncionario = sc.next();
-                        System.out.println("Dgite o telefone: ");
-                        String telefoneFuncionario = sc.next();
-                        System.out.println("Dgite o data de nascimento no seguinte padrão dd/MM/yyyy: ");
-                        String dataNascimentoFuncionario = sc.next();
-                        System.out.println("Dgite o email: ");
-                        String emailFuncionario = sc.next();
                         System.out.println("Dgite o vaga: ");
-                        String vagaFuncionario = sc.next();
+                        String vagaFuncionario = sc.nextLine();
                         System.out.println("Dgite o cpf: ");
-                        String cpfFuncionario = sc.next();
+                        String cpfFuncionario = sc.nextLine();
                         System.out.println("Dgite o genero: ");
-                        String generoFuncionario = sc.next();
+                        String generoFuncionario = sc.nextLine();
 
                         Funcionario funcionario = new Funcionario();
-                        funcionario.setNome(nomeFuncionario);
-                        funcionario.setSobrenome(sobrenomeFuncionario);
-                        funcionario.setTelefone(telefoneFuncionario);
-                        funcionario.setDataNascimento(new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimentoFuncionario));
-                        funcionario.setEmail(emailFuncionario);
                         funcionario.setVaga(vagaFuncionario);
                         funcionario.setCpf(cpfFuncionario);
                         funcionario.setGenero(generoFuncionario);
@@ -129,11 +127,11 @@ public class Main {
                 case 4:
                     // Visitante
                     System.out.println("Digite o email: ");
-                    String emailVisitante = sc.next();
+                    String emailVisitante = sc.next("aaaaa");
                     System.out.println("Digite o cep: ");
-                    String cepVisitante = sc.next();
+                    String cepVisitante = sc.nextLine();
                     System.out.println("Digite o renda: ");
-                    String rendaVisitante = sc.next();
+                    String rendaVisitante = sc.nextLine();
 
                     Visitante visitante = new Visitante();
                     visitante.setEmail(emailVisitante);
@@ -145,11 +143,11 @@ public class Main {
                 case 5:
                     // Voluntarios
                     System.out.println("Digite o vaga: ");
-                    String vagaVoluntario = sc.next();
+                    String vagaVoluntario = sc.nextLine();
                     System.out.println("Digite o cpf: ");
-                    String cpfVoluntario = sc.next();
+                    String cpfVoluntario = sc.nextLine();
                     System.out.println("Digite o genero: ");
-                    String generoVoluntario = sc.next();
+                    String generoVoluntario = sc.nextLine();
 
                     Voluntarios voluntarios = new Voluntarios();
                     voluntarios.setVaga(vagaVoluntario);
@@ -201,6 +199,10 @@ public class Main {
                     System.out.println(nos);
                     break;
                 case 3:
+                    System.out.println("Digite o nome da pessoa que deseja buscar");
+                    String nome = sc.nextLine();
+                    arvoreAvl.buscarRegistro(nome.hashCode(), arvoreAvl.raiz);
+                case 4:
                     loop = false;
                     break;
                 default:

@@ -11,6 +11,7 @@ public class Pessoa {
     private String telefone;
     private Date dataNascimento;
     private String email;
+
     private Atendido atendido;
     private Doador doador;
     private Funcionario funcionario;
