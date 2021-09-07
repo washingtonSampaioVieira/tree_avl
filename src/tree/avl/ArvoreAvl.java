@@ -1,5 +1,6 @@
 package tree.avl;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import tree.avl.model.Pessoa;
 
 import java.util.ArrayList;
@@ -273,20 +274,30 @@ public class ArvoreAvl {
         if (noAtual.getChave().getId().equals(id)) {
             return new Busca(noAtual.getChave(), comparacao);
         }
-        if (id > noAtual.getChave().getId()) {
-            if (noAtual.getDireita().getChave().getId().equals(id)) {
-                Busca busca = new Busca(noAtual.getDireita().getChave(), comparacao);
-                comparacao = 0;
-                return busca;
+
+            if (id > noAtual.getChave().getId()) {
+                if(noAtual.getDireita() == null){
+                    System.out.println("Registro não encontrado");
+                    return null;
+                }
+                if (noAtual.getDireita().getChave().getId().equals(id)) {
+                    Busca busca = new Busca(noAtual.getDireita().getChave(), comparacao);
+                    comparacao = 0;
+                    return busca;
+                }
+                return buscarRegistro(id, noAtual.getDireita());
+            } else {
+                if(noAtual.getEsquerda() == null){
+                    System.out.println("Registro não encontrado");
+                    return null;
+                }
+                if (noAtual.getEsquerda().getChave().getId().equals(id)) {
+                    Busca busca = new Busca(noAtual.getEsquerda().getChave(), comparacao);
+                    comparacao = 0;
+                    return busca;
+                }
+                return buscarRegistro(id, noAtual.getEsquerda());
             }
-            return buscarRegistro(id, noAtual.getDireita());
-        } else {
-            if (noAtual.getEsquerda().getChave().getId().equals(id)) {
-                Busca busca = new Busca(noAtual.getEsquerda().getChave(), comparacao);
-                comparacao = 0;
-                return busca;
-            }
-            return buscarRegistro(id, noAtual.getEsquerda());
-        }
+
     }
 }
