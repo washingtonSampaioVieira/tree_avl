@@ -11,6 +11,13 @@ public class Doador {
         this.endereco = endereco;
     }
 
+    @Override
+    public String toString() {
+        return "Doador{" +
+                "cpf='" + cpf + '\'' +
+                '}';
+    }
+
     public String getCep() {
         return cep;
     }

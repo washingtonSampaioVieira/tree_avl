@@ -7,6 +7,13 @@ public class Voluntarios {
     private String cpf;
     private String genero;
 
+    @Override
+    public String toString() {
+        return "Voluntarios{" +
+                "vaga='" + vaga + '\'' +
+                '}';
+    }
+
     public String getVaga() {
         return vaga;
     }

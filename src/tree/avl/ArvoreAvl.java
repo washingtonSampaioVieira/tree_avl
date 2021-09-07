@@ -270,10 +270,9 @@ public class ArvoreAvl {
 
     final public Busca buscarRegistro(Integer id, No noAtual) {
         comparacao++;
-        if (noAtual == null) {
-            return null;
+        if (noAtual.getChave().getId().equals(id)) {
+            return new Busca(noAtual.getChave(), comparacao);
         }
-
         if (id > noAtual.getChave().getId()) {
             if (noAtual.getDireita().getChave().getId().equals(id)) {
                 Busca busca = new Busca(noAtual.getDireita().getChave(), comparacao);

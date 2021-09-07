@@ -6,6 +6,14 @@ public class Busca {
     private Pessoa pessoa;
     private Integer compracao;
 
+    @Override
+    public String toString() {
+        return "Busca{" +
+                "pessoa=" + pessoa +
+                ", Comparações=" + compracao +
+                '}';
+    }
+
     public Busca(Pessoa pessoa, Integer compracao) {
         this.pessoa = pessoa;
         this.compracao = compracao;

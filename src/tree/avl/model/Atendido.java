@@ -13,6 +13,13 @@ public class Atendido {
         this.cpf = cpf;
     }
 
+    @Override
+    public String toString() {
+        return "Atendido{" +
+                "endereco='" + endereco + '\'' +
+                '}';
+    }
+
     public String getRenda() {
         return renda;
     }

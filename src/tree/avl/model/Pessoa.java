@@ -29,6 +29,20 @@ public class Pessoa {
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
         this.email = email;
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", atendido=" + atendido +
+                ", doador=" + doador +
+                ", funcionario=" + funcionario +
+                ", visitante=" + visitante +
+                ", voluntarios=" + voluntarios +
+                '}';
     }
 
     public Integer getId() {

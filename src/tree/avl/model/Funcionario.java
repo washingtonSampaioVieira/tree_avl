@@ -5,6 +5,12 @@ public class Funcionario {
     private String cpf;
     private String genero;
 
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "vaga='" + vaga + '\'' +
+                '}';
+    }
 
     public String getVaga() {
         return vaga;

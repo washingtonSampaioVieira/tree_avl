@@ -5,6 +5,13 @@ public class Visitante{
     private String cep;
     private String renda;
 
+    @Override
+    public String toString() {
+        return "Visitante{" +
+                "cep='" + cep + '\'' +
+                '}';
+    }
+
     public String getEmail() {
         return email;
     }
